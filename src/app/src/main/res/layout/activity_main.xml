@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/botonBuscarDispositivosBTLE"
+        android:text="Buscar Dispositivos BTLE nou 4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/botonDetenerBusquedaDispositivosBTLE"
+        android:text="Detener búsaqueda Dispositivos BTLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/botonBuscarNuestroDispositivoBTLE"
+        android:text="Buscar nuestro dispositivo  BTLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/sendNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Numero a enviar"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:text="SOLO ADMITE NUMEROS"
+        android:textColor="#D61010"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar numero escrito" />
+
+    <Button
+        android:id="@+id/btn_enviar_btle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar numero escaner BTLE" />
+
+</android.widget.LinearLayout>
