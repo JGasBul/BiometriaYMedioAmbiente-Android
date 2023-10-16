@@ -1,4 +1,4 @@
-package com.example.biometria;
+package com.example.beacondetecter;
 
 import org.junit.Test;
 

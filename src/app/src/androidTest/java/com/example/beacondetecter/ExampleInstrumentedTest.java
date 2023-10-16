@@ -1,4 +1,4 @@
-package com.example.biometria;
+package com.example.beacondetecter;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.biometria", appContext.getPackageName());
+        assertEquals("com.example.beacondetecter", appContext.getPackageName());
     }
 }
