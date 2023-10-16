@@ -1,7 +1,12 @@
 package com.example.beacondetecter;
 
 import java.util.Arrays;
-
+/*!
+ * \brief Clase para poder extraer los datos de los beacons
+ * \author Pepe Gascó Bule
+ * \version 1.0
+ * \date 2023
+ */
 public class TramaIBeacon {
     private byte[] prefijo = null; // 9 bytes
     private byte[] uuid = null; // 16 bytes

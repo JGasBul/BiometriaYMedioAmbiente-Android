@@ -3,7 +3,12 @@ package com.example.beacondetecter;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.UUID;
-
+/*!
+ * \brief Clase auxiliar con utilidades varias
+ * \author Pepe Gascó Bule
+ * \version 1.0
+ * \date 2023
+ */
 public class Utilidades {
 
     // -------------------------------------------------------------------------------

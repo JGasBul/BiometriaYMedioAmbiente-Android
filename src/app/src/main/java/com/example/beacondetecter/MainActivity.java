@@ -20,7 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
-
+/*!
+* \brief Columna vertebral del proyecto. Desde aqui se controla todo
+* \details Tenemos todos los metodos necesarios para que la app funcione
+* \author Pepe Gascó Bule
+* \version 1.0
+* \date 2023
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String ETIQUETA_LOG = ">>>>";
     private static final int CODIGO_PETICION_PERMISOS = 11223344;
@@ -55,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ETIQUETA_LOG, " onCreate(): termina ");
     }
 
-
+    /**
+     * Metodo con el que inicializamos el Bluetooth usando Bluetooth adapter
+     */
     private void inicializarBlueTooth() {
         Log.d(ETIQUETA_LOG, " inicializarBlueTooth(): obtenemos adaptador BT ");
         BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
@@ -86,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodo por el que buscamos y guardamos todos los emisores bluetooth cercanos
+     */
     private void buscarTodosLosDispositivosBTLE() {
         Log.d(ETIQUETA_LOG, " buscarTodosLosDispositivosBTL(): empieza ");
         Log.d(ETIQUETA_LOG, " buscarTodosLosDispositivosBTL(): instalamos scan callback ");
@@ -132,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
         this.elEscanner.startScan(this.callbackDelEscaneo);
     }
 
+    /**
+     * Metodo por el que mostramos por LogCat el resultado obtenido de buscarTodosLosDispositivosBTLE()
+     * @param resultado emisores cercanos via bluetooth
+     */
     private void mostrarInformacionDispositivoBTLE(ScanResult resultado) {
         BluetoothDevice bluetoothDevice = resultado.getDevice();
         byte[] bytes = resultado.getScanRecord().getBytes();
@@ -171,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ETIQUETA_LOG, " bytes (" + bytes.length + ") = " + Utilidades.bytesToHexString(bytes));
 
         TramaIBeacon tib = new TramaIBeacon(bytes);
+        // Filtramos por nombre
         if (bluetoothDevice.getName() != null){
             if (bluetoothDevice.getName().equals("PROY3A-FONDO-SUR")){
                 this.medidaBTLE.setValue(Utilidades.bytesToInt(tib.getMinor()));
@@ -194,6 +210,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ETIQUETA_LOG, " ****************************************************");
     }
 
+    /**
+     * Metodo para detener la busqueda de emisores bluetooth cercanos
+     */
     private void detenerBusquedaDispositivosBTLE() {
         if (this.callbackDelEscaneo == null) {
             return;
@@ -216,6 +235,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodo para filtrar por dispositivo
+     * No funciona correctamente
+     * @param dispositivoBuscado UUID del dispositivo deseado
+     */
     private void buscarEsteDispositivoBTLE(String dispositivoBuscado) {
         Log.d(ETIQUETA_LOG, " buscarEsteDispositivoBTLE(): empieza ");
         Log.d(ETIQUETA_LOG, "  buscarEsteDispositivoBTLE(): instalamos scan callback ");
@@ -279,10 +303,21 @@ public class MainActivity extends AppCompatActivity {
         this.buscarEsteDispositivoBTLE("PROY3A-FONDO-SUR");
     }
 
+    /**
+     * Metodo para enviar datos a la base de datos.
+     * @param context Contexto de la applicacion para los toast
+     */
     private void enviarDatos(Context context) {
         CallAPI api = new CallAPI(context);
         api.guardar_mediciones(this.medidaBTLE);
     }
+
+    /**
+     * Sobrecarga del metodo anterior para poder mandar el valor que deseamos para hacer pruebas
+     * @param context Contexto de la aplicacion
+     * @param editNum EditText que contiene el numero a mandar
+     * @param error TextView oculto con un mensaje de error
+     */
     private void enviarDatos(Context context , EditText editNum, TextView error) {
         error.setVisibility(View.INVISIBLE);
         float valor;
